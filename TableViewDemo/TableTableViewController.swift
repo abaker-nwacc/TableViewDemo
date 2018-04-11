@@ -15,7 +15,8 @@ class TableTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = "Baby Names"
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -31,13 +32,20 @@ class TableTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 2    // Section 0 = Girls, Section 1 = Boys
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        var result = 0;     // Number of rows
+        switch section {
+        case 0:     // Girls
+            result = girls.count
+        case 1:     // Boys
+            result = boys.count
+        default:    // Anything else
+            result = 0
+        }
+        return result
     }
 
     /*
