@@ -48,6 +48,19 @@ class TableTableViewController: UITableViewController {
         return result
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var result = ""
+        switch section {
+        case 0:     // Girls
+            result = "Popular Girl's Names"
+        case 1:     // Boys
+            result = "Popular Boy's Names"
+        default:
+            result = ""
+        }
+        return result
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
