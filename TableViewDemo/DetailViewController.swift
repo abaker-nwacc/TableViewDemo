@@ -10,9 +10,22 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    var kidName: String = ""
+    var gender: Int = 0
+    
+    @IBOutlet weak var kidNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = "Selected Baby"
+        
+        kidNameLabel.text = kidName
+        if gender == 0 {     // Girl
+            self.view.backgroundColor = UIColor.purple
+        }else{
+            self.view.backgroundColor = UIColor.blue
+        }
+        
         // Do any additional setup after loading the view.
     }
 

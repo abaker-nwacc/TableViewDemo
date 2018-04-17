@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var boyNamesLabel: UILabel!
     @IBOutlet weak var girlNamesLabel: UILabel!
+    @IBOutlet weak var selectedNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,5 +54,19 @@ class ViewController: UIViewController {
         dest.girls = girlNames
     }
 
+    // Unwind Segue Destination
+    @IBAction func unwindToMain(sender: UIStoryboardSegue)
+    {
+        let sourceViewController = sender.source as! DetailViewController
+        // Pull any data from the view controller which initiated the unwind segue.
+        let destGender = sourceViewController.gender
+        let destName = sourceViewController.kidName
+        selectedNameLabel.text = destName
+        if destGender == 0 {
+            selectedNameLabel.backgroundColor = UIColor.purple
+        }else{
+            selectedNameLabel.backgroundColor = UIColor.blue
+        }
+    }
 }
 

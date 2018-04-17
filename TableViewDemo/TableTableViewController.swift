@@ -13,6 +13,7 @@ class TableTableViewController: UITableViewController {
     var girls:[String] = []
     var boys:[String] = []
     var both:[(Int,String)] = []
+    var selectedIndexPath: IndexPath = IndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,4 +155,26 @@ class TableTableViewController: UITableViewController {
     }
     */
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // deselect current cell
+        
+        // perform segue
+        selectedIndexPath = indexPath
+        performSegue(withIdentifier: "toDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dest = segue.destination as! DetailViewController
+        dest.kidName = both[selectedIndexPath.row].1
+        dest.gender = both[selectedIndexPath.row].0
+    }
+    
+    // Unwind Segue Destination
+    @IBAction func unwindToTVC(sender: UIStoryboardSegue)
+    {
+        let sourceViewController = sender.source as! DetailViewController
+        // Pull any data from the view controller which initiated the unwind segue.
+        let destGender = sourceViewController.gender
+        let destName = sourceViewController.kidName
+    }
 }
